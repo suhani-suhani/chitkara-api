@@ -1,14 +1,11 @@
 const express = require("express");
 const cors = require("cors");
-
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
 const EMAIL = "suhani1516.be23@chitkarauniversity.edu.in";
 
-/* ---------------- HEALTH API ---------------- */
 app.get("/health", (req, res) => {
   res.status(200).json({
     is_success: true,
@@ -16,7 +13,7 @@ app.get("/health", (req, res) => {
   });
 });
 
-/* ---------------- HELPER FUNCTIONS ---------------- */
+
 function fibonacci(n) {
   const result = [0, 1];
   for (let i = 2; i < n; i++) {
@@ -46,13 +43,13 @@ function lcm(arr) {
   return arr.reduce((a, b) => lcmTwo(a, b));
 }
 
-/* ---------------- POST /bfhl API ---------------- */
+
 app.post("/bfhl", (req, res) => {
   try {
     const body = req.body;
     const keys = Object.keys(body);
 
-    // Must have exactly one key
+   
     if (keys.length !== 1) {
       return res.status(400).json({
         is_success: false
@@ -80,7 +77,7 @@ app.post("/bfhl", (req, res) => {
         break;
 
       case "AI":
-        // TEMPORARY AI RESPONSE (replace later with real AI)
+        
         data = "Mumbai";
         break;
 
@@ -102,7 +99,7 @@ app.post("/bfhl", (req, res) => {
   }
 });
 
-/* ---------------- SERVER ---------------- */
+
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
